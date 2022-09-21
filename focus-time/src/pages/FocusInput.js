@@ -21,7 +21,7 @@ export function FocusInput({ addSubject }) {
         />
         <Btn
           title="+"
-          size={25}
+          size={40}
           onPress={() => {
             if (text) {
               addSubject(text);
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
   text: {
     color: colors.white,
     fontFamily: "AvenirNext-Medium",
+    fontSize: sizes.md,
   },
   textInput: {
     width: "80%",

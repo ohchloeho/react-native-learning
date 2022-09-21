@@ -4,7 +4,7 @@ import { colors } from "../themes";
 
 export function Btn({ size = 125, ...props }) {
   return (
-    <TouchableOpacity style={styles(size).radius} onPress={props.onPress}>
+    <TouchableOpacity style={[styles(size).radius,{backgroundColor:props.color}]} onPress={props.onPress}>
       <Text style={styles(size).text}>{props.title}</Text>
     </TouchableOpacity>
   );

@@ -34,7 +34,7 @@ export function Timer({ focusSubject, clearSubject, onTimerEnd }) {
       </View>
       <ProgressBar
         progress={progress}
-        color={colors.onyx}
+        color={colors.white}
         style={styles.progress}
       />
       <View style={styles.btnsWrapper}>
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     marginTop: sizes.md,
   },
   progress: {
-    height: 10,
+    height: 8,
     width: 375,
   },
   btnsWrapper: {
