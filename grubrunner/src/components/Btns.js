@@ -1,24 +1,52 @@
 import React from "react";
-import { TouchableHighlight, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { colors, sizes } from "../themes";
 
-export function RecBtn() {
+// rectangular btn w/o borders
+export function RecBtn({ size = 125,...props }) {
   return (
-    <TouchableHighlight>
-      <Text></Text>
-    </TouchableHighlight>
+    <TouchableOpacity
+      style={[styles(size).recBtn, { backgroundColor: props.bgColor }]}
+    >
+      <Text style={styles(size).recBtnText}>hello</Text>
+    </TouchableOpacity>
   );
 }
 
-export function CircBtn() {
+// circular button w/o borders
+export function CircBtn({ size = 80, ...props }) {
   return (
-    <TouchableHighlight>
-      <Text></Text>
-    </TouchableHighlight>
+    <TouchableOpacity
+      style={[styles(size).circBtn, { backgroundColor: props.bgColor }]}
+    >
+      <Text style={styles(size).circBtnText}>=</Text>
+    </TouchableOpacity>
   );
 }
 
-const styles = StyleSheet.create({
-  btnChar:{
-    
-  }
-})
+const styles = (size) => ({
+  recBtnText: {
+    fontFamily: "Futura",
+    color: colors.white,
+    fontSize: size / 8,
+  },
+  recBtn: {
+    borderRadius: sizes.sm,
+    width: size,
+    height: size / 3,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  circBtnText: {
+    fontFamily: "Futura",
+    color: colors.white,
+    fontSize: size / 5,
+  },
+  circBtn: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: size / 2,
+    height: size / 2,
+    borderRadius: size / 4,
+  },
+});
