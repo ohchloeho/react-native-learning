@@ -3,12 +3,12 @@ import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import { colors, sizes } from "../themes";
 
 // rectangular btn w/o borders
-export function RecBtn({ size = 125,...props }) {
+export function RecBtn({ size = 125, ...props }) {
   return (
     <TouchableOpacity
       style={[styles(size).recBtn, { backgroundColor: props.bgColor }]}
     >
-      <Text style={styles(size).recBtnText}>hello</Text>
+      <Text style={styles(size).recBtnText}>{props.title}</Text>
     </TouchableOpacity>
   );
 }
@@ -19,7 +19,22 @@ export function CircBtn({ size = 80, ...props }) {
     <TouchableOpacity
       style={[styles(size).circBtn, { backgroundColor: props.bgColor }]}
     >
-      <Text style={styles(size).circBtnText}>=</Text>
+      <Text style={styles(size).circBtnText}>{props.title}</Text>
+    </TouchableOpacity>
+  );
+}
+
+export function BorderRecBtn({ size = 125, ...props }) {
+  return (
+    <TouchableOpacity
+      style={[
+        styles(size).borderRecBtn,
+        { borderColor: props.color, backgroundColor: props.bgColor },
+      ]}
+    >
+      <Text style={[styles(size).recBtnText, { color: props.color }]}>
+        {props.title}
+      </Text>
     </TouchableOpacity>
   );
 }
@@ -48,5 +63,13 @@ const styles = (size) => ({
     width: size / 2,
     height: size / 2,
     borderRadius: size / 4,
+  },
+  borderRecBtn: {
+    borderWidth: size / 70,
+    borderRadius: sizes.sm,
+    width: size,
+    height: size / 3,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
