@@ -13,7 +13,7 @@ export function RecBtn({ size = 125, ...props }) {
   );
 }
 
-// circular button w/o borders
+// circular btn w/o borders
 export function CircBtn({ size = 80, ...props }) {
   return (
     <TouchableOpacity
@@ -24,11 +24,28 @@ export function CircBtn({ size = 80, ...props }) {
   );
 }
 
+// rectangular btn w/ borders
 export function BorderRecBtn({ size = 125, ...props }) {
   return (
     <TouchableOpacity
       style={[
         styles(size).borderRecBtn,
+        { borderColor: props.color, backgroundColor: props.bgColor },
+      ]}
+    >
+      <Text style={[styles(size).recBtnText, { color: props.color }]}>
+        {props.title}
+      </Text>
+    </TouchableOpacity>
+  );
+}
+
+// circular btn w/ borders
+export function BorderCircBtn({ size = 125, ...props }) {
+  return (
+    <TouchableOpacity
+      style={[
+        styles(size).borderCircBtn,
         { borderColor: props.color, backgroundColor: props.bgColor },
       ]}
     >
@@ -69,6 +86,14 @@ const styles = (size) => ({
     borderRadius: sizes.sm,
     width: size,
     height: size / 3,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  borderCircBtn: {
+    borderWidth: size / 70,
+    borderRadius: size,
+    width: size / 2,
+    height: size / 2,
     alignItems: "center",
     justifyContent: "center",
   },
