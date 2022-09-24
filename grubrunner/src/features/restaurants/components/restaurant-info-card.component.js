@@ -1,19 +1,25 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 import { Card } from "react-native-paper";
-import { colors, sizes } from "grubrunner/src/themes.js";
 import styled from "styled-components/native";
 
 const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.secondary};
 `;
 const RestaurantCardCover = styled(Card.Cover)`
-  
+  padding: ${(props) => props.theme.sizes[1]};
 `;
-
-const Title = styled.Text`
-  padding: 16px;
+const Info = styled(View)`
+  padding: ${(props) => props.theme.sizes[1]};
+`;
+const Title = styled(Text)`
   color: ${(props) => props.theme.colors.text.primary};
+  font-family: ${(props) => props.theme.fonts.heading};
+  font-size: ${(props) => props.theme.fontSizes.title};
+`;
+const Address = styled(Text)`
+  font-family: ${(props) => props.theme.fonts.body};
+  font-size: ${(props) => props.theme.fontSizes.caption};
 `;
 
 export function RestaurantInfoCard({ restuarant = {} }) {
@@ -34,8 +40,10 @@ export function RestaurantInfoCard({ restuarant = {} }) {
   return (
     <RestaurantCard>
       <RestaurantCardCover key={name} source={{ uri: photos[1] }} />
-      <Card.Title title={name} subtitle={address} />
-      <Title>a trendy cool beach bar</Title>
+      <Info>
+        <Title>{name}</Title>
+        <Address>{address}</Address>
+      </Info>
     </RestaurantCard>
   );
 }
