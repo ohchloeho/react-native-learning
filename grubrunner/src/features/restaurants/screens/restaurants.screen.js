@@ -3,16 +3,8 @@ import { View, SafeAreaView, FlatList } from "react-native";
 import { List, Searchbar } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import styled from "styled-components";
-import { StatusBar } from "expo-status-bar";
 import { Spacer } from "../../../components/spacer.component";
-
-const SafeArea = styled(SafeAreaView)`
-  flex: 1;
-  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-`;
+import { SafeArea } from "../../../components/safe-area.component";
 
 const SearchContainer = styled(View)`
   padding: ${(props) => props.theme.space[3]};

@@ -4,7 +4,6 @@ import { Spacer } from "../../../components/spacer.component";
 import { Text } from "../../../components/text.component";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
-import {Card} from "react-native-paper";
 
 import {
   RestaurantCard,
