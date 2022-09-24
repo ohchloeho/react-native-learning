@@ -1,29 +1,21 @@
 import React from "react";
-import { Text, View } from "react-native";
-import { Card } from "react-native-paper";
-import styled from "styled-components/native";
+import { SvgXml } from "react-native-svg";
+import { Spacer } from "../../../components/spacer.component";
+import { Text } from "../../../components/text.component";
+import star from "../../../../assets/star";
+import open from "../../../../assets/open";
+import {Card} from "react-native-paper";
 
-const RestaurantCard = styled(Card)`
-  background-color: ${(props) => props.theme.colors.bg.secondary};
-`;
-const RestaurantCardCover = styled(Card.Cover)`
-  padding: ${(props) => props.theme.sizes[1]};
-`;
-const Info = styled(View)`
-  padding: ${(props) => props.theme.sizes[1]};
-`;
-const Title = styled(Text)`
-  color: ${(props) => props.theme.colors.text.primary};
-  font-family: ${(props) => props.theme.fonts.heading};
-  font-size: ${(props) => props.theme.fontSizes.title};
-`;
-const Address = styled(Text)`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.caption};
-`;
+import {
+  RestaurantCard,
+  RestaurantCardCover,
+  Info,
+  Stats,
+  Rating,
+} from "./restaurant-info-card.styles";
 
 export function RestaurantInfoCard({ restuarant = {} }) {
-  // destructure restaurant object defaults
+  // destructure restaurant object defaults for testing
   const {
     name = "Some Restaurant",
     icon,
@@ -33,16 +25,31 @@ export function RestaurantInfoCard({ restuarant = {} }) {
     ],
     address = "100 some random street",
     isOpenNow = true,
-    rating = 4,
+    rating = 3.5,
     isClosedTemporarily = false,
   } = restuarant;
 
+  const ratingArray = Array.from(new Array(Math.floor(rating)));
+
   return (
-    <RestaurantCard>
+    <RestaurantCard elevation={5}>
       <RestaurantCardCover key={name} source={{ uri: photos[1] }} />
       <Info>
-        <Title>{name}</Title>
-        <Address>{address}</Address>
+        <Text variant="label">{name}</Text>
+        <Stats>
+          <Rating>
+            {ratingArray.map((rating) => {
+              return <SvgXml width={20} height={20} xml={star} />;
+            })}
+          </Rating>
+          <Spacer position="left" size="large">
+            {isClosedTemporarily && (
+              <Text variant="error">closed temporarily</Text>
+            )}
+          </Spacer>
+          {isOpenNow && <SvgXml width={40} height={40} xml={open} />}
+        </Stats>
+        <Text variant="caption">{address}</Text>
       </Info>
     </RestaurantCard>
   );
