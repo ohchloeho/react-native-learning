@@ -6,5 +6,5 @@ export const SafeArea = styled(SafeAreaView)`
   ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
   width: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 `;

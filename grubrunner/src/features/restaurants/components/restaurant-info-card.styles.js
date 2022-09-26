@@ -22,3 +22,13 @@ export const Rating = styled(View)`
   padding-top: ${(props) => props.theme.space[1]}
   padding-bottom: ${(props) => props.theme.space[1]}
 `;
+
+export const Icon = styled.Image`
+  width: 20px;
+  height: 20px;
+`;
+
+export const Section = styled.View`
+  flex-direction: row;
+  justify-content:;
+`
