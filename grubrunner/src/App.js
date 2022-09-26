@@ -10,6 +10,7 @@ import { SafeArea } from "./components/safe-area.component";
 import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { restuarantRequest } from "./services/restaurants/restaurants.service";
 import { RestaurantContextProvider } from "./services/restaurants/restaurants.context";
+import { LocationContextProvider } from "./services/location/location.context";
 
 //fonts loading
 import {
@@ -90,21 +91,23 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantContextProvider>
-          <NavigationContainer>
-            <Tab.Navigator
-              barStyle={{
-                backgroundColor: theme.colors.bg.primary,
-                height: 70,
-              }}
-              screenOptions={screenOptions}
-            >
-              <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-              <Tab.Screen name="Map" component={Map} />
-              <Tab.Screen name="Settings" component={Settings} />
-            </Tab.Navigator>
-          </NavigationContainer>
-        </RestaurantContextProvider>
+        <LocationContextProvider>
+          <RestaurantContextProvider>
+            <NavigationContainer>
+              <Tab.Navigator
+                barStyle={{
+                  backgroundColor: theme.colors.bg.primary,
+                  height: 70,
+                }}
+                screenOptions={screenOptions}
+              >
+                <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+                <Tab.Screen name="Map" component={Map} />
+                <Tab.Screen name="Settings" component={Settings} />
+              </Tab.Navigator>
+            </NavigationContainer>
+          </RestaurantContextProvider>
+        </LocationContextProvider>
       </ThemeProvider>
       <StatusBar style="auto" />
     </>

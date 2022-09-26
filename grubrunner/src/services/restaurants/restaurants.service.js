@@ -12,15 +12,13 @@ export const restuarantRequest = (location = "51.219448,4.402464") => {
   });
 };
 
-export const restaurantsTransform = ({ results = [] }) => {
+export const restaurantTransform = ({ results = [] }) => {
   const mappedResults = results.map((restaurant) => {
-
     return {
-      //adding new properties to current results array
       ...restaurant,
-      isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY", // boolean depending on businessstatus
+      address: restaurant.vicinity,
       isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
-      images: mockImages[Math.ceil(Math.random() * mockImages.length - 1)],
+      isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY",
     };
   });
   return camelize(mappedResults);

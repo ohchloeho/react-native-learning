@@ -15,7 +15,7 @@ import {
   Section,
 } from "./restaurant-info-card.styles";
 
-export const RestaurantInfoCard = ({ restaurant = {} }) => {
+export const RestaurantInfoCard = ({ restaurant }) => {
   //destructure restaurant object defaults for testing
   const {
     name = "Some Restaurant",
@@ -32,16 +32,16 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
       "https://www.foodiesfeed.com/wp-content/uploads/2019/02/pizza-ready-for-baking-600x400.jpg",
     ],
     address = "100 some random street",
-    isOpenNow = true,
+    isOpenNow = false,
     rating = 3.5,
     isClosedTemporarily = false,
+    placeId,
   } = restaurant;
-  
+
   const ratingArray = Array.from(new Array(Math.floor(rating)));
   return (
-    <RestaurantCard elevation={5}>
+    <RestaurantCard key={name} elevation={5}>
       <RestaurantCardCover
-        key={name}
         source={{ uri: images[Math.ceil(Math.random() * images.length - 1)] }}
       />
       <Info>
@@ -49,8 +49,15 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
         <Stats>
           <Rating>
             {ratingArray.length &&
-              ratingArray.map((rating) => {
-                return <SvgXml width={20} height={20} xml={star} />;
+              ratingArray.map((rating, id) => {
+                return (
+                  <SvgXml
+                    key={`star-${placeId}-${id}`}
+                    width={20}
+                    height={20}
+                    xml={star}
+                  />
+                );
               })}
           </Rating>
           <Section>
