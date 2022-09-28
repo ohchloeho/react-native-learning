@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { TextInput, View } from "react-native";
 import { Btn } from "../components/button.component";
 import styled from "styled-components/native";
+import { DefinitionContext } from "../services/definitions/definition.context";
 
 const InputCont = styled(View)`
   flex-direction: row;
@@ -20,6 +21,7 @@ const Input = styled(TextInput)`
 `;
 
 export const InputBar = ({ setWordOutput }) => {
+  const { search, wordSearch } = useContext(DefinitionContext);
   const [searchWord, setSearchWord] = useState("");
   return (
     <InputCont>
@@ -36,6 +38,8 @@ export const InputBar = ({ setWordOutput }) => {
         onPress={() => {
           if (searchWord.length) {
             setWordOutput(searchWord);
+            search(searchWord);
+            setSearchWord("");
           }
         }}
       />

@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { Text} from "react-native";
+import { Text } from "react-native";
 
 // UI appearances
 import { theme } from "./src/themes/index";
@@ -12,6 +12,8 @@ import styled, { ThemeProvider } from "styled-components/native";
 import { DefinitionScreen } from "./src/screens/definitions.screen";
 import { WordSearchOutput } from "./src/screens/wordOutput.screen";
 
+import { DefinitionContextProvider } from "./src/services/definitions/definition.context";
+
 const HeadLogo = styled(Text)`
   font-size: ${theme.fontSizes.h1};
   color: ${theme.colors.text.primary};
@@ -19,16 +21,19 @@ const HeadLogo = styled(Text)`
 
 export default function App() {
   const [wordOutput, setWordOutput] = useState("enter a word");
+
   return (
     <>
       <ThemeProvider theme={theme}>
-        <SafeArea>
-          <HeadLogo>wordThing</HeadLogo>
-          <InputBar setWordOutput={setWordOutput}/>
-          <WordSearchOutput word={wordOutput} />
-          <DefinitionScreen word="hello"/>
-        </SafeArea>
-        <StatusBar style="auto" />
+        <DefinitionContextProvider>
+          <SafeArea>
+            <HeadLogo>wordThing</HeadLogo>
+            <InputBar setWordOutput={setWordOutput} />
+            <WordSearchOutput word={wordOutput} />
+            <DefinitionScreen word={wordOutput} />
+          </SafeArea>
+          <StatusBar style="auto" />
+        </DefinitionContextProvider>
       </ThemeProvider>
     </>
   );
