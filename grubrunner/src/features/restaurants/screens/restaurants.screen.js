@@ -1,7 +1,7 @@
 // packages
 import React, { useContext } from "react";
 import { View, FlatList } from "react-native";
-import { ActivityIndicator, Searchbar, Colors } from "react-native-paper";
+import { ActivityIndicator, Colors } from "react-native-paper";
 import styled from "styled-components";
 
 // components

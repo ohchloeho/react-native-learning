@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "wordthing-mobile",
+    "slug": "wordthing-mobile",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

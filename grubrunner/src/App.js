@@ -7,7 +7,7 @@ import { RestaurantsScreen } from "./features/restaurants/screens/restaurants.sc
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { SafeArea } from "./components/safe-area.component";
-import { FontAwesome5, Ionicons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { restuarantRequest } from "./services/restaurants/restaurants.service";
 import { RestaurantContextProvider } from "./services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./services/location/location.context";
@@ -24,7 +24,7 @@ import {
 } from "@expo-google-fonts/lato";
 
 export default function App() {
-  // fonts functions
+// fonts functions
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
   });
