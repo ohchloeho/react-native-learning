@@ -21,8 +21,7 @@ export const DefinitionContextProvider = ({ children }) => {
       definitionRequest(word)
         .then((result) => {
           setIsLoading(false);
-          setDefinitions(result);
-          console.log(result);
+          setDefinitions(result[0]);
         })
         .catch((err) => {
           setIsLoading(false);

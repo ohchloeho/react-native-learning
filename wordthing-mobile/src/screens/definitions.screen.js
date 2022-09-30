@@ -3,6 +3,7 @@ import { Text, View, FlatList } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 import { ContainerTitle } from "../components/containerTitle.component";
 import { DefinitionContext } from "../services/definitions/definition.context";
+import { MeaningItem } from "../components/definition-data.component";
 import styled from "styled-components/native";
 
 const DefinitionContainer = styled(View)`
@@ -18,7 +19,6 @@ const DefinitionList = styled(FlatList).attrs({
   contentContainerStyle: { padding: 8, width: 375 },
 })`
     overflow: scroll;
-    border: 1px solid white;
 `;
 
 const Loader = styled(ActivityIndicator)`
@@ -28,6 +28,7 @@ const Loader = styled(ActivityIndicator)`
 
 export const DefinitionScreen = (props) => {
   const { isLoading, definitions } = useContext(DefinitionContext);
+  console.log(definitions.meanings);
 
   return (
     <DefinitionContainer>
@@ -37,7 +38,10 @@ export const DefinitionScreen = (props) => {
         <>
           <Text>i'm a definition of {props.word.toLowerCase()}</Text>
           <DefinitionList 
-          data={definitions}
+          data={definitions.meanings}
+          renderItem = {({item})=>{
+            return <MeaningItem meaning={item}/>
+          }}
           />
         </>
       )}
