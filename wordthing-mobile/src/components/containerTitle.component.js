@@ -8,7 +8,6 @@ const TitleText = styled(Text)`
   font-weight: ${props=>props.theme.fontWeights.heavy};
   margin-bottom: ${props=>props.theme.marginSizes.sm};
 `;
-
 export const ContainerTitle = (props) => {
   return <TitleText>{props.dataType}</TitleText>;
 };

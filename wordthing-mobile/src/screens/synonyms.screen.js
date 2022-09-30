@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { View, FlatList } from "react-native";
+import { View, FlatList, Text } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 import { ContainerTitle } from "../components/containerTitle.component";
 import { DefinitionContext } from "../services/definitions/definition.context";
-import { MeaningItem } from "../components/definition-data.component";
+import { SynonymItem } from "../components/synonym-item.component";
 import styled from "styled-components/native";
 
-const DefinitionContainer = styled(View)`
+const SynonymContainer = styled(View)`
     border: 2px solid ${(props) => props.theme.colors.text.primary};
     border-radius: 10px;
     flex: 0.8;
@@ -15,38 +15,37 @@ const DefinitionContainer = styled(View)`
     align-items:center;
     position: relative; 
 `;
-const DefinitionList = styled(FlatList).attrs({
+const Loader = styled(ActivityIndicator)`
+  margin-top: 90px;
+  position: relative;
+`;
+const SynonymList = styled(FlatList).attrs({
   contentContainerStyle: { padding: 8, width: 315 },
 })`
   overflow: scroll;
 `;
 
-const Loader = styled(ActivityIndicator)`
-  margin-top: 90px;
-  position: relative;
-`;
-
-export const DefinitionScreen = (props) => {
+export const SynonymScreen = (props) => {
   const { isLoading, results } = useContext(DefinitionContext);
 
   return (
-    <DefinitionContainer>
+    <SynonymContainer>
       {props.word !== "enter a word" && (
         <>
           {isLoading && <Loader size={40} animating={true} color="#8D432A" />}
           {!isLoading && (
             <>
-              <ContainerTitle dataType="Definitions" />
-              <DefinitionList
+              <ContainerTitle dataType="Synonyms" />
+              <SynonymList
                 data={results.meanings}
                 renderItem={({ item }) => {
-                  return <MeaningItem meaning={item} />;
+                  return <SynonymItem synonymObj={item}/>;
                 }}
               />
             </>
           )}
         </>
       )}
-    </DefinitionContainer>
+    </SynonymContainer>
   );
 };

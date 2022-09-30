@@ -12,7 +12,7 @@ export const Btn = ({ size = 100, ...props }) => {
 const styles = (size) => ({
   radius: {
     borderRadius: size / 2,
-    width: size,
+    width: size * 2.5,
     height: size,
     alignItems: "center",
     justifyContent: "center",

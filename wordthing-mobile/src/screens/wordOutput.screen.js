@@ -4,9 +4,9 @@ import styled from "styled-components/native";
 
 const OutputText = styled(Text)`
     color: ${props=>props.theme.colors.text.primary};
-    font-size: ${props=>props.theme.fontSizes.h4};
+    font-size: ${props=>props.theme.fontSizes.h3};
     font-weight: ${props=>props.theme.fontWeights.heavy};
-    margin-bottom: ${props=>props.theme.marginSizes.sm};
+    margin: ${props=>props.theme.marginSizes.sm};
 `
 
 export const WordSearchOutput = (props) => {

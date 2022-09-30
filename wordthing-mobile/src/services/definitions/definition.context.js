@@ -6,7 +6,7 @@ export const DefinitionContext = createContext();
 export const DefinitionContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [definitions, setDefinitions] = useState([]);
+  const [results, setResults] = useState([]);
   const [wordSearch, setWordSearch] = useState("");
 
   // method that triggers and is passed to inputs
@@ -21,13 +21,13 @@ export const DefinitionContextProvider = ({ children }) => {
       definitionRequest(word)
         .then((result) => {
           setIsLoading(false);
-          setDefinitions(result[0]);
+          setResults(result[0]);
         })
         .catch((err) => {
           setIsLoading(false);
           setError(err);
         });
-    }, 2000); // load time
+    }, 1000); // load time
   };
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export const DefinitionContextProvider = ({ children }) => {
 
   return (
     <DefinitionContext.Provider
-      value={{ definitions, isLoading, error, search: onSearch, wordSearch }}
+      value={{ results, isLoading, error, search: onSearch, wordSearch }}
     >
       {children}
     </DefinitionContext.Provider>
