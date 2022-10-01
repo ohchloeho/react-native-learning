@@ -7,16 +7,12 @@ import { MeaningItem } from "../components/definition-data.component";
 import styled from "styled-components/native";
 
 const DefinitionContainer = styled(View)`
-    border: 2px solid ${(props) => props.theme.colors.text.primary};
-    border-radius: 10px;
-    flex: 0.8;
-    width: 350px;
-    padding: ${(props) => props.theme.marginSizes.md}
     align-items:center;
     position: relative; 
+    padding: ${(props) => props.theme.marginSizes.sm};
 `;
 const DefinitionList = styled(FlatList).attrs({
-  contentContainerStyle: { padding: 8, width: 315 },
+  contentContainerStyle: { padding: 8, width: 300 },
 })`
   overflow: scroll;
 `;

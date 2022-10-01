@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View, FlatList, Text } from "react-native";
+import { View, FlatList } from "react-native";
 import { ActivityIndicator } from "react-native-paper";
 import { ContainerTitle } from "../components/containerTitle.component";
 import { DefinitionContext } from "../services/definitions/definition.context";
@@ -7,20 +7,16 @@ import { SynonymItem } from "../components/synonym-item.component";
 import styled from "styled-components/native";
 
 const SynonymContainer = styled(View)`
-    border: 2px solid ${(props) => props.theme.colors.text.primary};
-    border-radius: 10px;
-    flex: 0.8;
-    width: 350px;
-    padding: ${(props) => props.theme.marginSizes.md}
-    align-items:center;
-    position: relative; 
+  align-items: center;
+  position: relative;
+  padding: ${(props) => props.theme.marginSizes.sm};
 `;
 const Loader = styled(ActivityIndicator)`
-  margin-top: 90px;
+  margin-top: 140px;
   position: relative;
 `;
 const SynonymList = styled(FlatList).attrs({
-  contentContainerStyle: { padding: 8, width: 315 },
+  contentContainerStyle: { padding: 8, width: 300 },
 })`
   overflow: scroll;
 `;
@@ -39,7 +35,7 @@ export const SynonymScreen = (props) => {
               <SynonymList
                 data={results.meanings}
                 renderItem={({ item }) => {
-                  return <SynonymItem synonymObj={item}/>;
+                  return <SynonymItem synonymObj={item} />;
                 }}
               />
             </>

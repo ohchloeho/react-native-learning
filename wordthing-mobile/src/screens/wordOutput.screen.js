@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 
 const OutputText = styled(Text)`
     color: ${props=>props.theme.colors.text.primary};
-    font-size: ${props=>props.theme.fontSizes.h3};
+    font-size: ${props=>props.theme.fontSizes.h4};
     font-weight: ${props=>props.theme.fontWeights.heavy};
     margin: ${props=>props.theme.marginSizes.sm};
 `

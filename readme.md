@@ -9,3 +9,7 @@ hi this is a folder of projects i built while learning react-native
 - finished focusTime lesson and build
 - learnt about FlatList and keepAppAwake
 - started grubrunner build
+
+30th September 2022 
+- wordThing-mobile build - definition and synonym features
+- app dev practices

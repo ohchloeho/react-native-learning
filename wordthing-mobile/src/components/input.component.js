@@ -3,6 +3,7 @@ import { TextInput, View } from "react-native";
 import { Btn } from "../components/button.component";
 import styled from "styled-components/native";
 import { DefinitionContext } from "../services/definitions/definition.context";
+import { RhymeContext } from "../services/rhymes/rhymes.context";
 
 const InputCont = styled(View)`
   flex-direction: column;
@@ -27,9 +28,17 @@ const Input = styled(TextInput)`
   color: ${(props) => props.theme.colors.text.primary};
 `;
 
-export const InputBar = ({ setWordOutput, setDefinitionDisplay, setSynonymDisplay }) => {
+export const InputBar = ({
+  setWordOutput,
+  setDefinitionDisplay,
+  setSynonymDisplay,
+  setRhymeDisplay,
+  wordOutput,
+}) => {
   const { search, wordSearch } = useContext(DefinitionContext);
+  const { searchRhymes } = useContext(RhymeContext);
   const [searchWord, setSearchWord] = useState("");
+
   return (
     <InputCont>
       <Input
@@ -44,10 +53,11 @@ export const InputBar = ({ setWordOutput, setDefinitionDisplay, setSynonymDispla
           size={40}
           title="definition"
           onPress={() => {
-            if (searchWord.length) {
+            setDefinitionDisplay(true);
+            setSynonymDisplay(false);
+            setRhymeDisplay(false);
+            if (searchWord.length && wordOutput.length) {
               setWordOutput(searchWord);
-              setDefinitionDisplay(true);
-              setSynonymDisplay(false);
               search(searchWord);
               setSearchWord("");
             }
@@ -57,16 +67,30 @@ export const InputBar = ({ setWordOutput, setDefinitionDisplay, setSynonymDispla
           size={40}
           title="synonym"
           onPress={() => {
-            if (searchWord.length) {
+            setSynonymDisplay(true);
+            setDefinitionDisplay(false);
+            setRhymeDisplay(false);
+            if (searchWord.length && wordOutput.length) {
               setWordOutput(searchWord);
-              setSynonymDisplay(true);
-              setDefinitionDisplay(false);
               search(searchWord);
               setSearchWord("");
             }
           }}
         />
-        <Btn size={40} title="rhyme" onPress={() => {}} />
+        <Btn
+          size={40}
+          title="rhyme"
+          onPress={() => {
+            setSynonymDisplay(false);
+            setDefinitionDisplay(false);
+            setRhymeDisplay(true);
+            if (searchWord.length && wordOutput.length) {
+              setWordOutput(searchWord);
+              searchRhymes(searchWord);
+              setSearchWord("");
+            }
+          }}
+        />
       </BtnContainer>
     </InputCont>
   );
