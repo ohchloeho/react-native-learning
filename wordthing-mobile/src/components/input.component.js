@@ -59,6 +59,7 @@ export const InputBar = ({
             if (searchWord.length && wordOutput.length) {
               setWordOutput(searchWord);
               search(searchWord);
+              searchRhymes(searchWord);
               setSearchWord("");
             }
           }}
@@ -73,6 +74,7 @@ export const InputBar = ({
             if (searchWord.length && wordOutput.length) {
               setWordOutput(searchWord);
               search(searchWord);
+              searchRhymes(searchWord);
               setSearchWord("");
             }
           }}
@@ -86,6 +88,7 @@ export const InputBar = ({
             setRhymeDisplay(true);
             if (searchWord.length && wordOutput.length) {
               setWordOutput(searchWord);
+              search(searchWord);
               searchRhymes(searchWord);
               setSearchWord("");
             }

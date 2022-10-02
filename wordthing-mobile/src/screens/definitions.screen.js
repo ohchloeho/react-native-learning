@@ -12,9 +12,9 @@ const DefinitionContainer = styled(View)`
     padding: ${(props) => props.theme.marginSizes.sm};
 `;
 const DefinitionList = styled(FlatList).attrs({
-  contentContainerStyle: { padding: 8, width: 300 },
+  contentContainerStyle: {width: 300 },
 })`
-  overflow: scroll;
+margin-bottom: ${(props) => props.theme.marginSizes.xl};
 `;
 
 const Loader = styled(ActivityIndicator)`

@@ -67,7 +67,7 @@ export default function App() {
             <DisplayContainer>
               {definitionDisplay && <DefinitionScreen word={wordOutput} />}
               {synonymDisplay && <SynonymScreen word={wordOutput} />}
-              {rhymeDisplay && <RhymeScreen />}
+              {rhymeDisplay && <RhymeScreen word={wordOutput} />}
             </DisplayContainer>
             <Footer>powered by Free Dictionary API and RhymeBrain</Footer>
           </SafeArea>

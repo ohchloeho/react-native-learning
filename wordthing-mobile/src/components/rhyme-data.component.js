@@ -2,10 +2,22 @@ import React from "react";
 import { View, Text } from "react-native";
 import styled from "styled-components/native";
 
-const Syllables = styled(Text)`
+const SyllableCount = styled(Text)`
   color: ${(props) => props.theme.colors.text.primary};
   font-weight: ${(props) => props.theme.fontWeights.heavy};
+  font-size: ${(props) => props.theme.fontSizes.title};
+`;
+
+const RhymesContainer = styled(Text)`
+  margin-top: ${(props) => props.theme.marginSizes.sm};
+`;
+
+const RhymeWord = styled(Text)`
+  color: ${(props) => props.theme.colors.text.primary};
   font-size: ${(props) => props.theme.fontSizes.body};
+`;
+const RhymeItemContainer = styled(View)`
+  margin-bottom: ${(props) => props.theme.marginSizes.md};
 `;
 
 // dynamic sorting function
@@ -22,15 +34,16 @@ export const RhymeItem = ({ syllables, rhymeResults }) => {
         return "-1";
       }
     });
-  console.log(output);
+
+
   return (
-    <View>
-      <Syllables>{syllables} syllable</Syllables>
-      <Text>
+    <RhymeItemContainer>
+      <SyllableCount>{syllables} syllable</SyllableCount>
+      <RhymesContainer>
         {output.map((obj) => {
-          return <Text>{obj.word}, </Text>;
+          return <RhymeWord>{obj.word}, </RhymeWord>;
         })}
-      </Text>
-    </View>
+      </RhymesContainer>
+    </RhymeItemContainer>
   );
 };

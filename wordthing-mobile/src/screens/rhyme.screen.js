@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import { FlatList, View } from "react-native";
+import { FlatList, View, ScrollView } from "react-native";
+import { ActivityIndicator } from "react-native-paper";
 import { ContainerTitle } from "../components/containerTitle.component";
 import styled from "styled-components/native";
 import { RhymeContext } from "../services/rhymes/rhymes.context";
@@ -11,13 +12,38 @@ const RhymeContainer = styled(View)`
   padding: ${(props) => props.theme.marginSizes.sm};
 `;
 
-export const RhymeScreen = () => {
+const Loader = styled(ActivityIndicator)`
+  margin-top: 140px;
+  position: relative;
+`;
+
+const ScrollContainer = styled(ScrollView).attrs({
+  contentContainerStyle: { width: 300 },
+})`
+  padding: ${(props) => props.theme.marginSizes.md};
+  margin-bottom: ${(props) => props.theme.marginSizes.xl};
+`;
+
+export const RhymeScreen = (props) => {
   const { isLoading, rhymeResults } = useContext(RhymeContext);
 
   return (
     <RhymeContainer>
-      <ContainerTitle dataType="Rhymes" />
-        <RhymeItem rhymeResults={rhymeResults} syllables="1"/>
+      {props.word !== "enter a word" && (
+        <>
+          {isLoading && <Loader size={40} animating={true} color="#8D432A" />}
+          {!isLoading && (
+            <>
+              <ContainerTitle dataType="Rhymes" />
+              <ScrollContainer>
+                <RhymeItem rhymeResults={rhymeResults} syllables="1" />
+                <RhymeItem rhymeResults={rhymeResults} syllables="2" />
+                <RhymeItem rhymeResults={rhymeResults} syllables="3" />
+              </ScrollContainer>
+            </>
+          )}
+        </>
+      )}
     </RhymeContainer>
   );
 };

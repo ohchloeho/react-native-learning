@@ -16,9 +16,9 @@ const Loader = styled(ActivityIndicator)`
   position: relative;
 `;
 const SynonymList = styled(FlatList).attrs({
-  contentContainerStyle: { padding: 8, width: 300 },
+  contentContainerStyle: { width: 300 },
 })`
-  overflow: scroll;
+  margin-bottom: ${(props) => props.theme.marginSizes.xl};
 `;
 
 export const SynonymScreen = (props) => {
