@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
 import { theme } from "../theme/index";
 import { RestaurantsNavigator } from "./restaurants.navigator";
+import { MapScreen } from "../../features/map/screens/map.screen";
 
 export const AppNavigator = () => {
   const Tab = createMaterialBottomTabNavigator();
@@ -20,13 +21,6 @@ export const AppNavigator = () => {
     return (
       <SafeArea>
         <Text>settings</Text>
-      </SafeArea>
-    );
-  };
-  const Map = () => {
-    return (
-      <SafeArea>
-        <Text>Map</Text>
       </SafeArea>
     );
   };
@@ -69,7 +63,7 @@ export const AppNavigator = () => {
         screenOptions={screenOptions}
       >
         <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
-        <Tab.Screen name="Map" component={Map} />
+        <Tab.Screen name="Map" component={MapScreen} />
         <Tab.Screen name="Settings" component={Settings} />
       </Tab.Navigator>
     </NavigationContainer>

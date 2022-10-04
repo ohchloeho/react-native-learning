@@ -11,9 +11,9 @@ const RestaurantStack = createStackNavigator();
 export const RestaurantsNavigator = () => {
   return (
     <RestaurantStack.Navigator
-      headerMode="none"
       screenOptions={{
         ...TransitionPresets.ModalPresentationIOS, //makes render swipe up from below
+        headerShown: false,
       }}
     >
       <RestaurantStack.Screen
