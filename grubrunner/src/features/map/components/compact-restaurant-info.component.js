@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, Platform } from "react-native";
+import { Platform } from "react-native";
 import styled from "styled-components/native";
 import WebView from "react-native-webview";
 
@@ -29,9 +29,9 @@ const ItemText = styled.Text`
 
 const isAndroid = Platform.OS === "android";
 
-export const CompactRestaurantInfo = ({ restaurant }) => {
-    // checks what platform device is on
-    const Image = isAndroid ? CompactWebview : CompactImage;
+export const CompactRestaurantInfo = ({ restaurant, isMap }) => {
+  // checks what platform device is on
+  const Image = isAndroid && isMap ? CompactWebview : CompactImage;
   return (
     <Item>
       <Image source={{ uri: restaurant.photos[0] }} />

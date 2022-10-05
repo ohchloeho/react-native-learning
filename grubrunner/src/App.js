@@ -6,6 +6,7 @@ import { theme } from "./infrastructure/theme/index";
 import { restuarantRequest } from "./services/restaurants/restaurants.service";
 import { RestaurantContextProvider } from "./services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./services/location/location.context";
+import { FavouritesContextProvider } from "./services/favourites/favourites.context";
 
 //fonts loading
 import {
@@ -19,7 +20,7 @@ import {
 } from "@expo-google-fonts/lato";
 
 export default function App() {
-// fonts functions
+  // fonts functions
   const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
   });
@@ -31,16 +32,17 @@ export default function App() {
     return null;
   }
   restuarantRequest();
- 
 
   return (
     <>
       <ThemeProvider theme={theme}>
-        <LocationContextProvider>
-          <RestaurantContextProvider>
-            <Navigation/>
-          </RestaurantContextProvider>
-        </LocationContextProvider>
+        <FavouritesContextProvider>
+          <LocationContextProvider>
+            <RestaurantContextProvider>
+              <Navigation />
+            </RestaurantContextProvider>
+          </LocationContextProvider>
+        </FavouritesContextProvider>
       </ThemeProvider>
       <StatusBar style="auto" />
     </>

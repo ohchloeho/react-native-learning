@@ -10,13 +10,15 @@ const SearchContainer = styled(View)`
   width: 100%;
 `;
 
-export const Search = () => {
+export const Search = ({ isFavouritesToggle, onToggle }) => {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword); // set default value of search bar
 
   return (
     <SearchContainer>
       <Searchbar
+        icon={isFavouritesToggle ? "heart" : "heart-outline"}
+        onIconPress={onToggle}
         placeholder="search"
         value={searchKeyword}
         onSubmitEditing={() => {

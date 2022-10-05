@@ -4,11 +4,13 @@ import { Card } from "react-native-paper";
 
 export const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
-  width: 100%;
-  elevation: 5;
+  elevation: 8;
+  position: relative;
 `;
 export const RestaurantCardCover = styled(Card.Cover)`
-  background-color: ${(props) => props.theme.colors.bg.primary};
+  position: relative;
+  z-index: -1;
+  background-color: transparent;
 `;
 export const Info = styled(View)`
   padding: ${(props) => props.theme.sizes[1]};
@@ -31,5 +33,5 @@ export const Icon = styled.Image`
 
 export const Section = styled.View`
   flex-direction: row;
-  justify-content:;
-`
+  justify-content: ;
+`;
