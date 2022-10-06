@@ -7,7 +7,7 @@ import { RhymeContext } from "../services/rhymes/rhymes.context";
 
 const InputCont = styled(View)`
   flex-direction: column;
-  flex: 0.17;
+  flex: 0.18;
   width: 350px;
   justify-content: space-between;
   align-items: center;
@@ -19,11 +19,12 @@ const BtnContainer = styled(View)`
   align-items: center;
   justify-content: space-between;
 `;
+
 const Input = styled(TextInput)`
   border: 2px solid ${(props) => props.theme.colors.text.primary};
   border-radius: ${(props) => props.theme.marginSizes.md};
   padding: ${(props) => props.theme.marginSizes.sm};
-  flex: 0.8;
+  flex: 0.9;
   width: 100%;
   color: ${(props) => props.theme.colors.text.primary};
 `;

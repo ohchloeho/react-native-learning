@@ -21,6 +21,6 @@ const styles = (size) => ({
   },
   text: {
     color: colors.text.primary,
-    fontSize: size / 3,
+    fontSize: size / 2.5,
   },
 });

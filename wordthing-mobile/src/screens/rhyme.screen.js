@@ -20,7 +20,6 @@ const Loader = styled(ActivityIndicator)`
 const ScrollContainer = styled(ScrollView).attrs({
   contentContainerStyle: { width: 300 },
 })`
-  padding: ${(props) => props.theme.marginSizes.md};
   margin-bottom: ${(props) => props.theme.marginSizes.xl};
 `;
 
