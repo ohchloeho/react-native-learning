@@ -1,15 +1,7 @@
 hi this is a folder of projects i built while learning react-native
 
-20th september 2022
-- started react-native learning
-- built simple to-do-app
-- built simple color-generator app
-
-21st September 2022
-- finished focusTime lesson and build
-- learnt about FlatList and keepAppAwake
-- started grubrunner build
-
-30th September 2022 
-- wordThing-mobile build - definition and synonym features
-- app dev practices
+to-do-app: basic beginner application
+color-generator: simple color generator with random color game
+focus-time: productivity timer 
+wordThing-mobile: word and rhyme dictionary
+grubrunner: restaurant finder
